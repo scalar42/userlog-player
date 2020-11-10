@@ -1,94 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset='utf-8'>
+  <head>
+    <meta charset="utf-8" />
     <title>Userlog Testpage</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel="stylesheet" href="https://userlog-testpage.netlify.app/common/controlbar.css">
-    <link rel="stylesheet" href="https://userlog-testpage.netlify.app/common/index.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://userlog-testpage.netlify.app/common/controlbar.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://userlog-testpage.netlify.app/common/index.css"
+    />
     <script src="https://userlog-testpage.netlify.app/common/compressed.js"></script>
     <!-- <script src="./common/main.js"></script>
     <script src="../../dist/dash.all.debug.js"></script>
     <script src="../../contrib/akamai/controlbar/ControlBar.js"></script> -->
-</head>
+  </head>
 
-<body>
+  <body>
     <!-- Description Texts -->
     <h1>Userlog Testpage</h1>
     <!-- Video Configurations -->
 
     <div id="c-div-0" class="c-div">
-        <h2>Configurations</h2>
-        <div>
-            <p>Multi Video Bitrates: https://cmafref.akamaized.net/cmaf/live-ull/2006350/akambr/out.mpd</p>
-            <p>Audio Bitrates: https://dash.akamaized.net/dash264/TestCases/3a/fraunhofer/aac-lc_stereo_without_video/ElephantsDream/elephants_dream_audio_only_aaclc_stereo_sidx.mpd</p>
-            <p>Multi Caps/Subs: https://livesim.dashif.org/livesim/testpic_2s/multi_subs.mpd</p>
-            <p>Live with playback: https://livesim.dashif.org/livesim/testpic_2s/Manifest.mpd</p>
-        </div>
-        <div id="h-div-0" class="h-div">
-            MPD:
-            <input type="text" id="mpd-link" class="mpd-link" value="https://cmafref.akamaized.net/cmaf/live-ull/2006350/akambr/out.mpd">
-            <button type="button" value="load" id="loadbutton" class="loadbutton" onclick="startVideo()">Load</button>
-        </div>
+      <h2>Configurations</h2>
+      <div>
+        <p>
+          Multi Video Bitrates:
+          https://cmafref.akamaized.net/cmaf/live-ull/2006350/akambr/out.mpd
+        </p>
+        <p>
+          Audio Bitrates:
+          https://dash.akamaized.net/dash264/TestCases/3a/fraunhofer/aac-lc_stereo_without_video/ElephantsDream/elephants_dream_audio_only_aaclc_stereo_sidx.mpd
+        </p>
+        <p>
+          Multi Caps/Subs:
+          https://livesim.dashif.org/livesim/testpic_2s/multi_subs.mpd
+        </p>
+        <p>
+          Live with playback:
+          https://livesim.dashif.org/livesim/testpic_2s/Manifest.mpd
+        </p>
+      </div>
+      <div id="h-div-0" class="h-div">
+        MPD:
+        <input
+          type="text"
+          id="mpd-link"
+          class="mpd-link"
+          value="https://cmafref.akamaized.net/cmaf/live-ull/2006350/akambr/out.mpd"
+        />
+        <button
+          type="button"
+          value="load"
+          id="loadbutton"
+          class="loadbutton"
+          onclick="startVideo()"
+        >
+          Load
+        </button>
+      </div>
     </div>
     <!-- Dash Player -->
-    <div class="dash-video-player ">
-        <div id="videoContainer" class="videoContainer">
-            <video></video>
-            <div id="videoController" class="video-controller unselectable" ng-cloak="">
-                <div id="playPauseBtn" class="btn-play-pause" data-toggle="tooltip" data-placement="bottom"
-                    title="Play/Pause">
-                    <span id="iconPlayPause" class="icon-play"></span>
-                </div>
-                <span id="videoTime" class="time-display">00:00:00</span>
-                <div id="fullscreenBtn" class="btn-fullscreen control-icon-layout" data-toggle="tooltip"
-                    data-placement="bottom" title="Fullscreen">
-                    <span class="icon-fullscreen-enter"></span>
-                </div>
-                <div id="bitrateListBtn" class="btn-bitrate control-icon-layout" data-toggle="tooltip"
-                    data-placement="bottom" title="Bitrate List">
-                    <span class="icon-bitrate"></span>
-                </div>
-                <input type="range" id="volumebar" class="volumebar" value="1" min="0" max="1" step=".01">
-                <div id="muteBtn" class="btn-mute control-icon-layout" data-toggle="tooltip" data-placement="bottom"
-                    title="Mute">
-                    <span id="iconMute" class="icon-mute-off"></span>
-                </div>
-                <div id="trackSwitchBtn" class="btn-track-switch control-icon-layout" data-toggle="tooltip"
-                    data-placement="bottom" title="Track List">
-                    <span class="icon-tracks"></span>
-                </div>
-                <div id="captionBtn" class="btn-caption control-icon-layout" data-toggle="tooltip"
-                    data-placement="bottom" title="Closed Caption / Subtitles">
-                    <span class="icon-caption"></span>
-                </div>
-                <span id="videoDuration" class="duration-display">00:00:00</span>
-                <div class="seekContainer">
-                    <div id="seekbar" class="seekbar seekbar-complete">
-                        <div id="seekbar-buffer" class="seekbar seekbar-buffer"></div>
-                        <div id="seekbar-play" class="seekbar seekbar-play"></div>
-                    </div>
-                </div>
-                <div id="thumbnail-container" class="thumbnail-container">
-                    <!-- Thumbnails will be rendered here -->
-                    <div id="thumbnail-elem" class="thumbnail-elem"></div>
-                    <div id="thumbnail-time-label" class="thumbnail-time-label"></div>
-                </div>
+    <div class="dash-video-player">
+      <div id="videoContainer" class="videoContainer">
+        <video></video>
+        <div
+          id="videoController"
+          class="video-controller unselectable"
+          ng-cloak=""
+        >
+          <div
+            id="playPauseBtn"
+            class="btn-play-pause"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Play/Pause"
+          >
+            <span id="iconPlayPause" class="icon-play"></span>
+          </div>
+          <span id="videoTime" class="time-display">00:00:00</span>
+          <div
+            id="fullscreenBtn"
+            class="btn-fullscreen control-icon-layout"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Fullscreen"
+          >
+            <span class="icon-fullscreen-enter"></span>
+          </div>
+          <div
+            id="bitrateListBtn"
+            class="btn-bitrate control-icon-layout"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Bitrate List"
+          >
+            <span class="icon-bitrate"></span>
+          </div>
+          <input
+            type="range"
+            id="volumebar"
+            class="volumebar"
+            value="1"
+            min="0"
+            max="1"
+            step=".01"
+          />
+          <div
+            id="muteBtn"
+            class="btn-mute control-icon-layout"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Mute"
+          >
+            <span id="iconMute" class="icon-mute-off"></span>
+          </div>
+          <div
+            id="trackSwitchBtn"
+            class="btn-track-switch control-icon-layout"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Track List"
+          >
+            <span class="icon-tracks"></span>
+          </div>
+          <div
+            id="captionBtn"
+            class="btn-caption control-icon-layout"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            title="Closed Caption / Subtitles"
+          >
+            <span class="icon-caption"></span>
+          </div>
+          <span id="videoDuration" class="duration-display">00:00:00</span>
+          <div class="seekContainer">
+            <div id="seekbar" class="seekbar seekbar-complete">
+              <div id="seekbar-buffer" class="seekbar seekbar-buffer"></div>
+              <div id="seekbar-play" class="seekbar seekbar-play"></div>
             </div>
+          </div>
+          <div id="thumbnail-container" class="thumbnail-container">
+            <!-- Thumbnails will be rendered here -->
+            <div id="thumbnail-elem" class="thumbnail-elem"></div>
+            <div id="thumbnail-time-label" class="thumbnail-time-label"></div>
+          </div>
         </div>
+      </div>
     </div>
     <!-- Log List -->
     <div id="c-div-1" class="c-div">
-        <div id="h-div-1" class="h-div">
-            <h2>Log List</h2>
-            <h2 id="logcount" class="logcount">(0 line(s)):</h2>
-            <button type="button" value="save" id="savebutton" class="savebutton"
-                onclick="saveTextAsFile()">Save</button>
-        </div>
-        <div id="logText" class="logText"></div>
+      <div id="h-div-1" class="h-div">
+        <h2>Log List</h2>
+        <h2 id="logcount" class="logcount">(0 line(s)):</h2>
+        <button
+          type="button"
+          value="save"
+          id="savebutton"
+          class="savebutton"
+          onclick="saveTextAsFile()"
+        >
+          Save
+        </button>
+      </div>
+      <div id="logText" class="logText"></div>
     </div>
-
-</body>
-
+  </body>
 </html>

@@ -1,43 +1,44 @@
 h1 {
-    text-align: center;
+  text-align: center;
 }
 
 .c-div {
-    margin: 10px 25%;
-    position: relative;
+  margin: 10px 25%;
+  position: relative;
 }
 
 .h-div {
-    padding: 0% 5px;
-    display: flex;
-    justify-content: space-between;
+  padding: 0% 5px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .mpd-link {
-    margin: auto 5px;
-    width: 90%;
+  margin: auto 5px;
+  width: 90%;
 }
 
 .dash-video-player {
-    position: relative;
-    width: 50%;
-    margin: auto;
+  position: relative;
+  width: 50%;
+  margin: auto;
 }
 
 .videoContainer video {
-    width: 100%;
+  width: 100%;
 }
 
 .video-controller {
-    margin-top: -5px !important;
+  margin-top: -5px !important;
 }
 
-.loadbutton, .savebutton {
-    margin: auto 0% auto auto;
+.loadbutton,
+.savebutton {
+  margin: auto 0% auto auto;
 }
 
 .logText {
-    text-align: left;
-    /* margin-left: 20%; */
-    white-space: pre-line;
+  text-align: left;
+  /* margin-left: 20%; */
+  white-space: pre-line;
 }
