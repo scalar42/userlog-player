@@ -38373,6 +38373,7 @@ function TimeSyncController() {
     }
 
     function httpHandler(decoder, url, onSuccessCB, onFailureCB, isHeadRequest) {
+        console.log("TEST0"+url);
         var oncomplete = undefined,
             onload = undefined;
         var complete = false;
@@ -38384,6 +38385,7 @@ function TimeSyncController() {
         // according to ISO 23009-1, url could be a white-space
         // separated list of URLs. just handle one at a time.
         url = urls.shift();
+        console.log("[TEST1]"+url);
 
         oncomplete = function () {
             if (complete) {
