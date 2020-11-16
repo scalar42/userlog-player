@@ -2,10 +2,10 @@
 //   Define custom user behaviour log functions
  **********************************************************************/
 function writeLog(time, type, content){
-    if (type == 'CONTROLBAR') {
-        document.getElementById("logText").innerHTML += '[' + time + '] ' + '[' + type + '] [' + content + ']&#10';
-    }
-    // document.getElementById("logText").innerHTML += '[' + time + '] ' + '[' + type + '] [' + content + ']&#10';
+    // if (type == 'CONTROLBAR') {
+    //     document.getElementById("logText").innerHTML += '[' + time + '] ' + '[' + type + '] [' + content + ']&#10';
+    // }
+    document.getElementById("logText").innerHTML += '[' + time + '] ' + '[' + type + '] [' + content + ']&#10';
 }
 
 function startVideo() {
