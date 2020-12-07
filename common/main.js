@@ -9,7 +9,19 @@ function writeLog(time, type, content){
 }
 
 function startVideo() {
-    loglen = 0
+
+
+    var httpRequest = new XMLHttpRequest();//第一步：创建需要的对象
+    // var url = "http://127.0.0.1:8080";
+    var link = document.getElementById("server-link").value+":"+document.getElementById("port-link").value;
+    // httpRequest.withCredentials=true;
+    httpRequest.open('POST', link, true); //第二步：打开连接
+    httpRequest.setRequestHeader("Content-type","application/x-www-form-urlencoded");//设置请求头 注：post方式必须设置请求头（在建立连接后设置请求头）
+    var trace = document.getElementById("trace-link").value;
+    httpRequest.send('start=true&trace='+trace);//发送请求
+
+
+    loglen = 0;
     // Select the node that will be observed for mutations
     const targetNode = document.getElementById('logText');
     // Options for the observer (which mutations to observe)
@@ -35,8 +47,12 @@ function startVideo() {
     var url = document.getElementById("mpd-link").value;
     var video = document.querySelector(".dash-video-player video");
 
+
+    document.getElementById("logText").innerHTML += "#[SERVER] [" + document.getElementById("server-link").value + "]&#10";
+    document.getElementById("logText").innerHTML += "#[PORT] [" + document.getElementById("port-link").value + "]&#10";
+    document.getElementById("logText").innerHTML += "#[TRACE] [" + document.getElementById("trace-link").value + "]&#10";
     document.getElementById("logText").innerHTML += "#[MPD] [" + url + "]&#10";
-    document.getElementById("logText").innerHTML += "[" + Date.now() + "] [START] [START_OF_LOG]&#10"
+    document.getElementById("logText").innerHTML += "[" + Date.now() + "] [START] [START_OF_LOG]&#10";
 
     // DASH JS VIDEO PLAYER
     // [PASS] Multi Video Bitrates: https://cmafref.akamaized.net/cmaf/live-ull/2006350/akambr/out.mpd
@@ -61,8 +77,16 @@ function startVideo() {
 }
 
 function saveTextAsFile() {
+
+    var httpRequest = new XMLHttpRequest();//第一步：创建需要的对象
+    var url = document.getElementById("server-link").value+":"+document.getElementById("port-link").value;
+    // httpRequest.withCredentials=true;
+    httpRequest.open('POST', url, true); //第二步：打开连接
+    httpRequest.setRequestHeader("Content-type","application/x-www-form-urlencoded");//设置请求头 注：post方式必须设置请求头（在建立连接后设置请求头）
+    httpRequest.send('start=false');//发送请求
+
     var textToWrite = document.getElementById('logText').innerHTML;
-    console.log(textToWrite)
+    console.log(textToWrite);
     var textFileAsBlob = new Blob([textToWrite], { type: 'text/plain' });
     var fileNameToSaveAs = "log.text";
 

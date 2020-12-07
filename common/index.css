@@ -8,14 +8,14 @@ h1 {
 }
 
 .h-div {
-  padding: 0% 5px;
+  padding: 5px 5px;
   display: flex;
   justify-content: space-between;
 }
 
-.mpd-link {
+.mpd-link, .trace-link, .server-link, .port-link {
   margin: auto 5px;
-  width: 90%;
+  width: 80%;
 }
 
 .dash-video-player {
